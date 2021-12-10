@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#eeeeee" />
+    <meta
+      name="description"
+      content="My Weather App"
+    />
+
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+    function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <title>My Weather Monitor | My Waether App</title>
+
+    <!-- google fonts -->  
+    <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+  
+    <!-- Template CSS >
+    <link rel="stylesheet" href="%PUBLIC_URL%/css/style.css" media="all">
+    <link rel="stylesheet" href="%PUBLIC_URL%/css/easy-responsive-tabs.css"-->
+
+    
+
+  </head>
+  <body  onload="startTime()" id="main" class="slides horizontal simplifiedMobile animated">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    
+    
+    
+
+
+    <div id="root">
+
+
+    </div>
+
+  </body>
+    <script src="%PUBLIC_URL%/js/jquery.min.js" type="text/javascript"></script><!-- default jQuery -->
+
+<!-- bootstrap js -->
+<script src="%PUBLIC_URL%/js/skycons.js"></script>
+
+						<!-- date -->
+            <script type="text/javascript">
+              var mydate=new Date()
+              var year=mydate.getYear()
+              if(year<1000)
+              year+=1900
+              var day=mydate.getDay()
+              var month=mydate.getMonth()
+              var daym=mydate.getDate()
+              if(daym<10)
+              daym="0"+daym
+              var dayarray=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
+              var montharray=new Array("January","February","March","April","May","June","July","August","September","October","November","December")
+              document.getElementById('w3date').innerHTML =
+              ""+dayarray[day]+", "+montharray[month]+" "+daym+", "+year+"";
+
+</script>
+         <!-- //date -->
+
+
+<script>
+     var icons = new Skycons({"color": "#f5f5f5"}),
+        list  = [
+        "sleet"
+        ],
+        i;
+
+      for(i = list.length; i--; )
+      icons.set(list[i], list[i]);
+
+      icons.play();
+    </script>
+    <script>
+       var icons = new Skycons({"color": "#f5f5f5"}),
+          list  = [
+          "clear-night", "partly-cloudy-day",
+          "partly-cloudy-night", "cloudy", "rain", "clear-day", "snow", "wind",
+          "fog"
+          ],
+          i;
+
+        for(i = list.length; i--; )
+        icons.set(list[i], list[i]);
+
+        icons.play();
+    </script>
+  <!-- //sky-icons -->
+  <!-- tabs -->
+    <script src="js/easyResponsiveTabs.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        //Horizontal Tab
+        $('#parentHorizontalTab').easyResponsiveTabs({
+          type: 'default', //Types: default, vertical, accordion
+          width: 'auto', //auto or any width like 600px
+          fit: true, // 100% fit in a container
+          tabidentify: 'hor_1', // The tab groups identifier
+          activate: function(event) { // Callback function if tab is switched
+            var $tab = $(this);
+            var $info = $('#nested-tabInfo');
+            var $name = $('span', $info);
+            $name.text($tab.text());
+            $info.show();
+          }
+        });
+      });
+    </script>
+  <!-- //tabs -->
+  <!-- time -->
+    <script>
+      function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('w3time').innerHTML =
+        h + ":" + m + ":" + s;
+        var t = setTimeout(startTime, 500);
+      }
+      function checkTime(i) {
+        if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+        return i;
+      }
+
+
+
+
+    </script>
+  <!-- //time -->
+
+
+</html>
